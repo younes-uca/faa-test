@@ -1,0 +1,106 @@
+
+<p-dialog [(visible)]="viewEnjeuxIrdDialog" [style]="{width: '70vw'}"
+        header="Enjeux ird" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Enjeux ird">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="1">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedEnjeuxIrd.libelle"
+                                           id="1" [(ngModel)]="selectedEnjeuxIrd.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="2">Code</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Code"  [(ngModel)]="selectedEnjeuxIrd.code"
+                                           id="2" [(ngModel)]="selectedEnjeuxIrd.code"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="3">Description</label>
+                                    <textarea id="3" pInputTextarea rows="5" cols="30"
+                                              placeholder="Description"  [(ngModel)]="selectedEnjeuxIrd.description"
+                                    ></textarea>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-4">
+                                    <div  class="label-inputswitch">
+                                        <label for="4">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="4"  [disabled]="true" [(ngModel)]="selectedEnjeuxIrd.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="5">Date archivage</label>
+                                    <p-calendar id="5" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedEnjeuxIrd.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="6">Date creation</label>
+                                    <p-calendar id="6" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedEnjeuxIrd.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-4">
+                                    <div  class="label-inputswitch">
+                                        <label for="7">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="7"  [disabled]="true" [(ngModel)]="selectedEnjeuxIrd.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-4">
+                                    <div  class="label-inputswitch">
+                                        <label for="8">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="8"  [disabled]="true" [(ngModel)]="selectedEnjeuxIrd.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-chercheur-create-chercheur></app-chercheur-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

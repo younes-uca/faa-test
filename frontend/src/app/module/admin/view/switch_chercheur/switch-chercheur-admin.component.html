@@ -1,0 +1,117 @@
+<p-dialog [(visible)]="switchChercheurDialog" [style]="{width: '70vw'}" header="Chercheur" [modal]="true"
+    styleClass="p-fluid">
+<div class="p-grid">
+    <div class="p-col-12">
+        
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchChercheur.numeroMatricule">
+                                    <label for="1">Numero matricule</label>
+                                </span>
+                                <!--<span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchChercheur.email">
+                                    <label for="2">Email</label>
+                                </span>-->
+                              
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="26"
+                                           type="text"  [(ngModel)]="searchChercheur.username">
+                                    <label for="26">Username</label>
+                                </span>
+                               
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="28"
+                                           type="text"  [(ngModel)]="searchChercheur.prenom">
+                                    <label for="28">Prenom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="29"
+                                           type="text"  [(ngModel)]="searchChercheur.nom">
+                                    <label for="29">Nom</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+            <p-table #dt [value]="chercheurs" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['numeroMatricule', 'email', 'libelle', 'libelle', 'libelle', 'libelle', 'libelle', 'libelle', 'libelle', 'libelle', 'libelle', 'natureImplication', 'resume', 'formationEnManagement', 'credentialsNonExpired', 'enabled', 'createdAt', 'updatedAt', 'accountNonExpired', 'accountNonLocked', 'username', 'password', 'prenom', 'nom', 'role', 'passwordChanged']" [(selection)]="selectedChercheur"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Chercheurs</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>                              
+                                <th pSortableColumn="numeroMatricule">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Numero matricule</span>
+                                        <p-sortIcon field="numeroMatricule"></p-sortIcon>
+                                    </div>
+                                </th>                               
+                               <th pSortableColumn="email">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Email</span>
+                                        <p-sortIcon field="email"></p-sortIcon>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="prenom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prenom</span>
+                                        <p-sortIcon field="prenom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="nom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nom</span>
+                                        <p-sortIcon field="nom"></p-sortIcon>
+                                    </div>
+                                </th>
+                        <th>Sign in</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-chercheur>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="chercheur"></p-tableCheckbox>
+                        </td>                       
+                                 <td>{{chercheur.numeroMatricule}}</td>                        
+                                 <td>{{chercheur.email}}</td>
+                                 <td>{{chercheur.prenom}}</td>
+                                 <td>{{chercheur.nom}}</td>
+                        <td>                     
+                            <button pButton pRipple icon="pi pi-sign-in" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="switchChercheur(chercheur)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{chercheurs ? chercheurs.length == 1 ? 'y a' : 'y a' : 'y a' }} {{chercheurs ? chercheurs.length : 0 }} {{chercheurs ? chercheurs.length == 1 ? 'chercheur' : 'chercheurs' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
+</p-dialog>

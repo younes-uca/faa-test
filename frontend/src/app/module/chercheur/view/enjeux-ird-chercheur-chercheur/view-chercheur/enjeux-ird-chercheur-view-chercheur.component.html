@@ -1,0 +1,47 @@
+
+<p-dialog [(visible)]="viewEnjeuxIrdChercheurDialog" [style]="{width: '70vw'}"
+        header="Enjeux ird chercheur" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Enjeux ird chercheur">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Enjeux ird</label>
+                                    <p-dropdown [options]="enjeuxIrds" [(ngModel)]="selectedEnjeuxIrdChercheur.enjeuxIrdVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Enjeux ird">
+                                    </p-dropdown>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-enjeux-ird-create-chercheur></app-enjeux-ird-create-chercheur>
+            <app-chercheur-create-chercheur></app-chercheur-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

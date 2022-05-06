@@ -1,0 +1,157 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateEtatEtapeCampagne('etatEtapeCampagne')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchEtatEtapeCampagne.libelle">
+                                    <label for="1">Libelle</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchEtatEtapeCampagne.code">
+                                    <label for="2">Code</label>
+                                </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEtatEtapeCampagne.ordreMin"
+                                                             id="3-1"></p-inputNumber>
+                                              <label for="3-1">Ordre Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchEtatEtapeCampagne.ordreMax"
+                                                             id="3-2"></p-inputNumber>
+                                             <label for="3-2">Ordre Max</label>
+                                       </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="etatEtapeCampagnes" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['libelle', 'code', 'ordre']" [(selection)]="selectedEtatEtapeCampagne"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Etat etape campagnes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="libelle">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Libelle</span>
+                                        <p-sortIcon field="libelle"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="code">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Code</span>
+                                        <p-sortIcon field="code"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="ordre">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Ordre</span>
+                                        <p-sortIcon field="ordre"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-etatEtapeCampagne>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="etatEtapeCampagne"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{etatEtapeCampagne.libelle}}</td>
+                            
+
+                            
+                                 <td>{{etatEtapeCampagne.code}}</td>
+                            
+
+                            
+                                 <td>{{etatEtapeCampagne.ordre}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editEtatEtapeCampagne(etatEtapeCampagne)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewEtatEtapeCampagne(etatEtapeCampagne)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteEtatEtapeCampagne(etatEtapeCampagne)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateEtatEtapeCampagne(etatEtapeCampagne)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{etatEtapeCampagnes ? etatEtapeCampagnes.length == 1 ? 'y a' : 'y a' : 'y a' }} {{etatEtapeCampagnes ? etatEtapeCampagnes.length : 0 }} {{etatEtapeCampagnes ? etatEtapeCampagnes.length == 1 ? 'etatEtapeCampagne' : 'etatEtapeCampagnes' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-etat-etape-campagne-create-chercheur></app-etat-etape-campagne-create-chercheur>
+        <app-etat-etape-campagne-edit-chercheur></app-etat-etape-campagne-edit-chercheur>
+        <app-etat-etape-campagne-view-chercheur></app-etat-etape-campagne-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

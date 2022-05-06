@@ -1,0 +1,60 @@
+
+<p-dialog [(visible)]="viewEtatEtapeCampagneDialog" [style]="{width: '70vw'}"
+        header="Etat etape campagne" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Etat etape campagne">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedEtatEtapeCampagne.libelle"
+                                           id="1" [(ngModel)]="selectedEtatEtapeCampagne.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Code</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Code"  [(ngModel)]="selectedEtatEtapeCampagne.code"
+                                           id="2" [(ngModel)]="selectedEtatEtapeCampagne.code"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Ordre</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Ordre"  [(ngModel)]="selectedEtatEtapeCampagne.ordre"
+                                            [(ngModel)]="selectedEtatEtapeCampagne.ordre"></p-inputNumber>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+</p-dialog>
+
+
+

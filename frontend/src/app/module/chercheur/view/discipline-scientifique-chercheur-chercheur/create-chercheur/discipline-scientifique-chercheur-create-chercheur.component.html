@@ -1,0 +1,67 @@
+        <p-dialog [(visible)]="createDisciplineScientifiqueChercheurDialog" [style]="{width: '70vw'}"
+                header="Discipline scientifique chercheur" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Discipline scientifique chercheur">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="1">Discipline scientifique</label>
+                                            <p-dropdown [options]="disciplineScientifiques" [(ngModel)]="selectedDisciplineScientifiqueChercheur.disciplineScientifiqueVo"
+                                                    id="1" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelleEng"
+                                                    placeholder="Discipline scientifique"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedisciplineScientifique('disciplineScientifique')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="2">Discipline scientifique erc</label>
+                                            <p-dropdown [options]="disciplineScientifiqueErcs" [(ngModel)]="selectedDisciplineScientifiqueChercheur.disciplineScientifiqueErcVo"
+                                                    id="2" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelleEng"
+                                                    placeholder="Discipline scientifique erc"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatedisciplineScientifiqueErc('disciplineScientifiqueErc')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-discipline-scientifique-create-chercheur></app-discipline-scientifique-create-chercheur>
+                    <app-discipline-scientifique-erc-create-chercheur></app-discipline-scientifique-erc-create-chercheur>
+                    <app-chercheur-create-chercheur></app-chercheur-create-chercheur>
+
+
+    </p-dialog>

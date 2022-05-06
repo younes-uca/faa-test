@@ -1,0 +1,77 @@
+
+        <p-dialog [(visible)]="editCampagneDialog" [style]="{width: '70vw'}"
+                header="Campagne" [modal]="true"
+                styleClass="p-fluid">
+
+            <ng-template pTemplate="content">
+                <p-tabView>
+                    <p-tabPanel header="Campagne">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Libelle</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Libelle"
+                                                   id="1" [(ngModel)]="selectedCampagne.libelle"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Code</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Code"
+                                                   id="2" [(ngModel)]="selectedCampagne.code"
+                                                   />
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Annee</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Annee"  [(ngModel)]="selectedCampagne.annee"
+                                                    [(ngModel)]="selectedCampagne.annee"></p-inputNumber>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Date depart</label>
+                                            <p-calendar id="4"
+                                                        placeholder="Date depart"  [(ngModel)]="selectedCampagne.dateDepart"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="5">Date fin</label>
+                                            <p-calendar id="5"
+                                                        placeholder="Date fin"  [(ngModel)]="selectedCampagne.dateFin"
+                                                    dateFormat="{{dateFormat}}"></p-calendar>
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check"  style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+
+
+    </p-dialog>
+
+
+

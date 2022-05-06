@@ -1,0 +1,57 @@
+
+<p-dialog [(visible)]="viewKeyWordDisciplineScientifiqueErcDialog" [style]="{width: '70vw'}"
+        header="Key word discipline scientifique erc" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Key word discipline scientifique erc">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Key word</label>
+                                    <p-dropdown [options]="keyWords" [(ngModel)]="selectedKeyWordDisciplineScientifiqueErc.keyWordVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelleEng"
+                                            placeholder="Key word">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Discipline scientifique</label>
+                                    <p-dropdown [options]="disciplineScientifiques" [(ngModel)]="selectedKeyWordDisciplineScientifiqueErc.disciplineScientifiqueVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelleEng"
+                                            placeholder="Discipline scientifique">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-key-word-create-admin></app-key-word-create-admin>
+            <app-discipline-scientifique-create-admin></app-discipline-scientifique-create-admin>
+
+
+
+</p-dialog>
+
+
+

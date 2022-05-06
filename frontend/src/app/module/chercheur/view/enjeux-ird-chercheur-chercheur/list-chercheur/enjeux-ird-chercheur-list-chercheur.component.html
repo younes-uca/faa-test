@@ -1,0 +1,135 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateEnjeuxIrdChercheur('enjeuxIrdChercheur')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="enjeuxIrds" [(ngModel)]="searchEnjeuxIrdChercheur.enjeuxIrdVo"
+                                        id="1"
+                                        [filter]="true" [showClear]="true"  placeholder="Enjeux ird"
+                                        optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="chercheurs" [(ngModel)]="searchEnjeuxIrdChercheur.chercheurVo"
+                                        id="2"
+                                        [filter]="true" [showClear]="true"  placeholder="Chercheur"
+                                        optionLabel="numeroMatricule">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="enjeuxIrdChercheurs" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['libelle', 'numeroMatricule']" [(selection)]="selectedEnjeuxIrdChercheur"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Enjeux ird chercheurs</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="enjeuxIrd">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Enjeux ird</span>
+                                        <p-sortIcon field="enjeuxIrd"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="chercheur">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Chercheur</span>
+                                        <p-sortIcon field="chercheur"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-enjeuxIrdChercheur>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="enjeuxIrdChercheur"></p-tableCheckbox>
+                        </td>
+                            
+                                <td>{{enjeuxIrdChercheur.enjeuxIrdVo?.libelle}}</td>
+                            
+
+                            
+                                <td>{{enjeuxIrdChercheur.chercheurVo?.numeroMatricule}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editEnjeuxIrdChercheur(enjeuxIrdChercheur)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewEnjeuxIrdChercheur(enjeuxIrdChercheur)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteEnjeuxIrdChercheur(enjeuxIrdChercheur)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateEnjeuxIrdChercheur(enjeuxIrdChercheur)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{enjeuxIrdChercheurs ? enjeuxIrdChercheurs.length == 1 ? 'y a' : 'y a' : 'y a' }} {{enjeuxIrdChercheurs ? enjeuxIrdChercheurs.length : 0 }} {{enjeuxIrdChercheurs ? enjeuxIrdChercheurs.length == 1 ? 'enjeuxIrdChercheur' : 'enjeuxIrdChercheurs' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-enjeux-ird-chercheur-create-chercheur></app-enjeux-ird-chercheur-create-chercheur>
+        <app-enjeux-ird-chercheur-edit-chercheur></app-enjeux-ird-chercheur-edit-chercheur>
+        <app-enjeux-ird-chercheur-view-chercheur></app-enjeux-ird-chercheur-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

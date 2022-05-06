@@ -1,0 +1,116 @@
+
+<p-dialog [(visible)]="viewDisciplineScientifiqueErcParentDialog" [style]="{width: '70vw'}"
+        header="Discipline scientifique erc parent" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Discipline scientifique erc parent">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="1">Libelle fr</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle fr"  [(ngModel)]="selectedDisciplineScientifiqueErcParent.libelleFr"
+                                           id="1" [(ngModel)]="selectedDisciplineScientifiqueErcParent.libelleFr"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="2">Libelle eng</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle eng"  [(ngModel)]="selectedDisciplineScientifiqueErcParent.libelleEng"
+                                           id="2" [(ngModel)]="selectedDisciplineScientifiqueErcParent.libelleEng"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="3">Code</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Code"  [(ngModel)]="selectedDisciplineScientifiqueErcParent.code"
+                                           id="3" [(ngModel)]="selectedDisciplineScientifiqueErcParent.code"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="4">Niveau</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Niveau"  [(ngModel)]="selectedDisciplineScientifiqueErcParent.niveau"
+                                            [(ngModel)]="selectedDisciplineScientifiqueErcParent.niveau"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="5">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="5"  [disabled]="true" [(ngModel)]="selectedDisciplineScientifiqueErcParent.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="6">Date archivage</label>
+                                    <p-calendar id="6" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedDisciplineScientifiqueErcParent.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-3">
+                                    <label for="7">Date creation</label>
+                                    <p-calendar id="7" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedDisciplineScientifiqueErcParent.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="8">Admin</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="8"  [disabled]="true" [(ngModel)]="selectedDisciplineScientifiqueErcParent.admin"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                    <div  class="label-inputswitch">
+                                        <label for="9">Visible</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="9"  [disabled]="true" [(ngModel)]="selectedDisciplineScientifiqueErcParent.visible"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-chercheur-create-chercheur></app-chercheur-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

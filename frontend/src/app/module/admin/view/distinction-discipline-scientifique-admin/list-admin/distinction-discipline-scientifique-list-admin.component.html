@@ -1,0 +1,135 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateDistinctionDisciplineScientifique('distinctionDisciplineScientifique')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="distinctions" [(ngModel)]="searchDistinctionDisciplineScientifique.distinctionVo"
+                                        id="1"
+                                        [filter]="true" [showClear]="true"  placeholder="Distinction"
+                                        optionLabel="id">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="disciplineScientifiques" [(ngModel)]="searchDistinctionDisciplineScientifique.disciplineScientifiqueVo"
+                                        id="2"
+                                        [filter]="true" [showClear]="true"  placeholder="Discipline scientifique"
+                                        optionLabel="libelleEng">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="distinctionDisciplineScientifiques" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['id', 'libelleEng']" [(selection)]="selectedDistinctionDisciplineScientifique"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Distinction discipline scientifiques</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="distinction">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Distinction</span>
+                                        <p-sortIcon field="distinction"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="disciplineScientifique">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Discipline scientifique</span>
+                                        <p-sortIcon field="disciplineScientifique"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-distinctionDisciplineScientifique>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="distinctionDisciplineScientifique"></p-tableCheckbox>
+                        </td>
+                            
+                                <td>{{distinctionDisciplineScientifique.distinctionVo?.id}}</td>
+                            
+
+                            
+                                <td>{{distinctionDisciplineScientifique.disciplineScientifiqueVo?.libelleEng}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editDistinctionDisciplineScientifique(distinctionDisciplineScientifique)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewDistinctionDisciplineScientifique(distinctionDisciplineScientifique)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteDistinctionDisciplineScientifique(distinctionDisciplineScientifique)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateDistinctionDisciplineScientifique(distinctionDisciplineScientifique)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{distinctionDisciplineScientifiques ? distinctionDisciplineScientifiques.length == 1 ? 'y a' : 'y a' : 'y a' }} {{distinctionDisciplineScientifiques ? distinctionDisciplineScientifiques.length : 0 }} {{distinctionDisciplineScientifiques ? distinctionDisciplineScientifiques.length == 1 ? 'distinctionDisciplineScientifique' : 'distinctionDisciplineScientifiques' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-distinction-discipline-scientifique-create-admin></app-distinction-discipline-scientifique-create-admin>
+        <app-distinction-discipline-scientifique-edit-admin></app-distinction-discipline-scientifique-edit-admin>
+        <app-distinction-discipline-scientifique-view-admin></app-distinction-discipline-scientifique-view-admin>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

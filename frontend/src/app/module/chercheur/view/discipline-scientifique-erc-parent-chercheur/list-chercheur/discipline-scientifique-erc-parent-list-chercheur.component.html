@@ -1,0 +1,323 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateDisciplineScientifiqueErcParent('disciplineScientifiqueErcParent')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchDisciplineScientifiqueErcParent.libelleFr">
+                                    <label for="1">Libelle fr</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchDisciplineScientifiqueErcParent.libelleEng">
+                                    <label for="2">Libelle eng</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="3"
+                                           type="text"  [(ngModel)]="searchDisciplineScientifiqueErcParent.code">
+                                    <label for="3">Code</label>
+                                </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDisciplineScientifiqueErcParent.niveauMin"
+                                                             id="4-1"></p-inputNumber>
+                                              <label for="4-1">Niveau Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchDisciplineScientifiqueErcParent.niveauMax"
+                                                             id="4-2"></p-inputNumber>
+                                             <label for="4-2">Niveau Max</label>
+                                       </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="5" [options]="yesOrNoArchive" [(ngModel)]="searchDisciplineScientifiqueErcParent.archive"
+                                            [filter]="false" [showClear]="true"  placeholder="Archive"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDisciplineScientifiqueErcParent.dateArchivageMin"
+                                    id="6-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="6-1">Date archivage Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDisciplineScientifiqueErcParent.dateArchivageMax"
+                                    id="6-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="6-2">Date archivage Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDisciplineScientifiqueErcParent.dateCreationMin"
+                                    id="7-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="7-1">Date creation Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchDisciplineScientifiqueErcParent.dateCreationMax"
+                                    id="7-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="7-2">Date creation Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="8" [options]="yesOrNoAdmin" [(ngModel)]="searchDisciplineScientifiqueErcParent.admin"
+                                            [filter]="false" [showClear]="true"  placeholder="Admin"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="9" [options]="yesOrNoVisible" [(ngModel)]="searchDisciplineScientifiqueErcParent.visible"
+                                            [filter]="false" [showClear]="true"  placeholder="Visible"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="chercheurs" [(ngModel)]="searchDisciplineScientifiqueErcParent.chercheurVo"
+                                        id="10"
+                                        [filter]="true" [showClear]="true"  placeholder="Chercheur"
+                                        optionLabel="numeroMatricule">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="disciplineScientifiqueErcParents" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['libelleFr', 'libelleEng', 'code', 'niveau', 'archive', 'dateArchivage', 'dateCreation', 'admin', 'visible', 'numeroMatricule']" [(selection)]="selectedDisciplineScientifiqueErcParent"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Discipline scientifique erc parents</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Search..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="libelleFr">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Libelle fr</span>
+                                        <p-sortIcon field="libelleFr"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="libelleEng">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Libelle eng</span>
+                                        <p-sortIcon field="libelleEng"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="code">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Code</span>
+                                        <p-sortIcon field="code"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="niveau">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Niveau</span>
+                                        <p-sortIcon field="niveau"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="archive">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Archive</span>
+                                        <p-sortIcon field="archive"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateArchivage">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date archivage</span>
+                                        <p-sortIcon field="dateArchivage"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateCreation">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date creation</span>
+                                        <p-sortIcon field="dateCreation"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="admin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Admin</span>
+                                        <p-sortIcon field="admin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                <!-- 
+                                <th pSortableColumn="visible">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Visible</span>
+                                        <p-sortIcon field="visible"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="chercheur">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Chercheur</span>
+                                        <p-sortIcon field="chercheur"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-disciplineScientifiqueErcParent>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="disciplineScientifiqueErcParent"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{disciplineScientifiqueErcParent.libelleFr}}</td>
+                            
+
+                            
+                                 <td>{{disciplineScientifiqueErcParent.libelleEng}}</td>
+                            
+
+                            
+                                 <td>{{disciplineScientifiqueErcParent.code}}</td>
+                            
+
+                            
+                                 <td>{{disciplineScientifiqueErcParent.niveau}}</td>
+                            
+
+                            
+                                <td><i *ngIf="disciplineScientifiqueErcParent.archive" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!disciplineScientifiqueErcParent.archive" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td>{{disciplineScientifiqueErcParent.dateArchivage | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{disciplineScientifiqueErcParent.dateCreation | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td><i *ngIf="disciplineScientifiqueErcParent.admin" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!disciplineScientifiqueErcParent.admin" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                             <!-- 
+                                <td><i *ngIf="disciplineScientifiqueErcParent.visible" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!disciplineScientifiqueErcParent.visible" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                             --> 
+
+                             <!-- 
+                                <td>{{disciplineScientifiqueErcParent.chercheurVo?.numeroMatricule}}</td>
+                             --> 
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateDisciplineScientifiqueErcParent(disciplineScientifiqueErcParent)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{disciplineScientifiqueErcParents ? disciplineScientifiqueErcParents.length == 1 ? 'y a' : 'y a' : 'y a' }} {{disciplineScientifiqueErcParents ? disciplineScientifiqueErcParents.length : 0 }} {{disciplineScientifiqueErcParents ? disciplineScientifiqueErcParents.length == 1 ? 'disciplineScientifiqueErcParent' : 'disciplineScientifiqueErcParents' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-discipline-scientifique-erc-parent-create-chercheur></app-discipline-scientifique-erc-parent-create-chercheur>
+        <app-discipline-scientifique-erc-parent-edit-chercheur></app-discipline-scientifique-erc-parent-edit-chercheur>
+        <app-discipline-scientifique-erc-parent-view-chercheur></app-discipline-scientifique-erc-parent-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

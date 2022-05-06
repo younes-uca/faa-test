@@ -1,0 +1,33 @@
+<div class="p-px-4 ">
+    <br><br>
+    <div class="p-d-flex p-flex-column p-jc-center p-pb-5 p-mx-auto p-ai-center">
+        <img src="assets/images/acceuil.png" class="fostrap-logo" /><br>
+        <h1 class="heading"> Bienvenue dans votre application </h1>
+    </div>
+    <div class="p-grid">
+        <div class="p-field p-col-12 p-md-3">
+        </div>
+        <div class="p-field p-col-12 p-md-3">
+            <p-card (click)="redirectChercheur()" header="Espace Chercheur" class="card"
+                    [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+                <ng-template pTemplate="header">
+                    <img class="img-card" src="assets/images/chercheur.png">
+                </ng-template>
+                <p>describe!</p>
+            </p-card>
+        </div>
+        <div class="p-field p-col-12 p-md-3">
+            <p-card (click)="redirectAdmin()" header="Espace Administrateur" class="card"
+                    [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+                <ng-template pTemplate="header">
+                    <img class="img-card" src="assets/images/admin.png">
+                </ng-template>
+                <p>describe!</p>
+            </p-card>
+        </div>
+        <div class="p-field p-col-12 p-md-3">
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+<app-footer></app-footer>

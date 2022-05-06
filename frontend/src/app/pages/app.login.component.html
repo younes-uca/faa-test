@@ -1,0 +1,40 @@
+<div class="login-body">
+        <div class="card login-panel p-fluid">
+            <div class="login-panel-content">
+                <div class="p-grid">
+                    <div class="p-col-12 p-sm-6 p-md-6 logo-container">
+                        <img src="assets/layout/images/logo-roma.svg" />
+                        <span class="guest-sign-in">Welcome, please use the form to sign-in Roma network</span>
+                    </div>
+                    <div class="p-col-12 username-container">
+                        <!-- <h:panelGroup> -->
+                            <label>Username</label>
+                            <div class="login-input">
+                                <input id="input" type="text" pInputText> 
+                            </div>
+                        <!-- </h:panelGroup> -->
+                    </div>
+                    <div class="p-col-12 password-container">
+                        <!-- <h:panelGroup> -->
+                            <label>Password</label>
+                            <div class="login-input">
+                                <input pPassword type="password" />
+                            </div>
+                        <!-- </h:panelGroup> -->
+                    </div>
+                    <div class="p-col-12 p-sm-6 p-md-6 rememberme-container">
+                        <p-checkbox></p-checkbox>
+                        <label> Remember me</label>
+                    </div>
+    
+                    <div class="p-col-12 p-sm-6 p-md-6 forgetpassword-container">
+                        <a href="#" class="forget-password">Forget Password</a>
+                    </div>
+    
+                    <div class="p-col-12 p-sm-6 p-md-6">
+                            <button [routerLink]="['/']"  pButton type="button" icon="pi pi-check" label="Sign In"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

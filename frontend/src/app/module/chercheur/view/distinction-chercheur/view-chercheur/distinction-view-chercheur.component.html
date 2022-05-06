@@ -1,0 +1,92 @@
+
+<p-dialog [(visible)]="viewDistinctionDialog" [style]="{width: '70vw'}"
+        header="Distinction" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Distinction">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Date obtention</label>
+                                    <p-calendar id="1" [disabled]="true"
+                                                placeholder="Date obtention"  [(ngModel)]="selectedDistinction.dateObtention"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Intitule</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Intitule"  [(ngModel)]="selectedDistinction.intitule"
+                                           id="2" [(ngModel)]="selectedDistinction.intitule"
+                                           autofocus>
+                                </div>
+
+
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="6">Etat etape campagne</label>
+                                    <p-dropdown [options]="etatEtapeCampagnes" [(ngModel)]="selectedDistinction.etatEtapeCampagneVo"
+                                            id="6" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat etape campagne">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+                    <p-tabPanel header="Distinction discipline scientifiques">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedDistinction.distinctionDisciplineScientifiquesVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Discipline scientifique</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                        <td>{{p.disciplineScientifiqueVo?.libelleEng}}</td>
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-chercheur-create-chercheur></app-chercheur-create-chercheur>
+            <app-campagne-create-chercheur></app-campagne-create-chercheur>
+            <app-etat-etape-campagne-create-chercheur></app-etat-etape-campagne-create-chercheur>
+
+                    <app-discipline-scientifique-create-chercheur></app-discipline-scientifique-create-chercheur>
+
+
+</p-dialog>
+
+
+

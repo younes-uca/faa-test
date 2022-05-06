@@ -1,0 +1,57 @@
+
+<p-dialog [(visible)]="viewDistinctionDisciplineScientifiqueDialog" [style]="{width: '70vw'}"
+        header="Distinction discipline scientifique" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Distinction discipline scientifique">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Distinction</label>
+                                    <p-dropdown [options]="distinctions" [(ngModel)]="selectedDistinctionDisciplineScientifique.distinctionVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Distinction">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Discipline scientifique</label>
+                                    <p-dropdown [options]="disciplineScientifiques" [(ngModel)]="selectedDistinctionDisciplineScientifique.disciplineScientifiqueVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelleEng"
+                                            placeholder="Discipline scientifique">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-distinction-create-admin></app-distinction-create-admin>
+            <app-discipline-scientifique-create-admin></app-discipline-scientifique-create-admin>
+
+
+
+</p-dialog>
+
+
+

@@ -1,0 +1,67 @@
+
+<p-dialog [(visible)]="viewIdentifiantAuteurExpertDialog" [style]="{width: '70vw'}"
+        header="Identifiant auteur expert" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Identifiant auteur expert">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Identifiant recherche</label>
+                                    <p-dropdown [options]="identifiantRecherches" [(ngModel)]="selectedIdentifiantAuteurExpert.identifiantRechercheVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Identifiant recherche">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Chercheur</label>
+                                    <p-dropdown [options]="chercheurs" [(ngModel)]="selectedIdentifiantAuteurExpert.chercheurVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="numeroMatricule"
+                                            placeholder="Chercheur">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Valeur</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Valeur"  [(ngModel)]="selectedIdentifiantAuteurExpert.valeur"
+                                           id="3" [(ngModel)]="selectedIdentifiantAuteurExpert.valeur"
+                                           autofocus>
+                                </div>
+
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-identifiant-recherche-create-admin></app-identifiant-recherche-create-admin>
+            <app-chercheur-create-admin></app-chercheur-create-admin>
+
+
+
+</p-dialog>
+
+
+

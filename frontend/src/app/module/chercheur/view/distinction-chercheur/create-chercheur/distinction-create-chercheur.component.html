@@ -1,0 +1,78 @@
+    <p-toast></p-toast>
+    <div class="card">
+        <p-message severity="{{info}}" text="{{msgsContents}}"></p-message>
+    </div>
+
+<p-panel header="Distinction"   *ngIf="isLoaded" >
+    <div class="p-fluid">
+
+
+
+            <ng-template pTemplate="content" [ngIf]="true">
+                <p-tabView>
+                    <p-tabPanel header="Distinction">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Date obtention</label>
+                                            <p-calendar id="1"
+                                                        placeholder="Date obtention"  [(ngModel)]="selectedDistinction.dateObtention"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Intitule</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Intitule"
+                                                   id="2" [(ngModel)]="selectedDistinction.intitule"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                    <div class="p-field p-col-12  p-md-6">
+                                        <label>Discipline scientifique</label>
+                                        <p-multiSelect [options]="distinctionDisciplineScientifiquesVo" [(ngModel)]="selectedDistinction.distinctionDisciplineScientifiquesVo" defaultLabel="Select un disciplineScientifique" optionLabel="disciplineScientifiqueVo.libelleEng"  display="chip"></p-multiSelect>
+                                    </div>
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="6">Etat etape campagne</label>
+                                            <p-dropdown [options]="etatEtapeCampagnes" [(ngModel)]="selectedDistinction.etatEtapeCampagneVo"
+                                                    id="6" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Etat etape campagne"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateetatEtapeCampagne('etatEtapeCampagne')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" [ngIf]="true">
+                <div class="p-grid">
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-chercheur-create-chercheur></app-chercheur-create-chercheur>
+                    <app-campagne-create-chercheur></app-campagne-create-chercheur>
+                    <app-etat-etape-campagne-create-chercheur></app-etat-etape-campagne-create-chercheur>
+
+                            <app-discipline-scientifique-create-chercheur></app-discipline-scientifique-create-chercheur>
+
+    </div>
+</p-panel>
