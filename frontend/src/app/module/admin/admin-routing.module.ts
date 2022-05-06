@@ -41,7 +41,7 @@ import { EnjeuxIrdChercheurAdminComponent } from './view/enjeux-ird-chercheur-ad
 import { KeyWordDisciplineScientifiqueErcAdminComponent } from './view/key-word-discipline-scientifique-erc-admin/key-word-discipline-scientifique-erc-admin.component';
 
 
-import { EtatEtapeCampagneAdminComponent } from './view/etat-etape-campagne-admin/etat-etape-campagne-admin.component';
+import { EtatEtapeCampagneAdminComponent } from './view/folder-test/etat-etape-campagne-admin/etat-etape-campagne-admin.component';
 
 
 import { DisciplineScientifiqueParentAdminComponent } from './view/discipline-scientifique-parent-admin/discipline-scientifique-parent-admin.component';
@@ -54,9 +54,6 @@ import { DisciplineScientifiqueChercheurAdminComponent } from './view/discipline
 
 
 import { CampagneAdminComponent } from './view/campagne-admin/campagne-admin.component';
-
-
-import { KeyWordAdminComponent } from './view/key-word-admin/key-word-admin.component';
 
 
 import { DistinctionDisciplineScientifiqueAdminComponent } from './view/distinction-discipline-scientifique-admin/distinction-discipline-scientifique-admin.component';
@@ -77,7 +74,7 @@ import { DistinctionDisciplineScientifiqueAdminComponent } from './view/distinct
                                     component: LoginAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
-                              ]
+                            ]
                         },
                         {
                             path: 'register',
@@ -87,7 +84,7 @@ import { DistinctionDisciplineScientifiqueAdminComponent } from './view/distinct
                                     component: RegisterAdminComponent ,
                                     canActivate: [AuthGuard]
                                 }
-                              ]
+                            ]
                         },
                         {
 
@@ -212,17 +209,6 @@ import { DistinctionDisciplineScientifiqueAdminComponent } from './view/distinct
                         },
                         {
 
-                            path: 'etat-etape-campagne',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: EtatEtapeCampagneAdminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-                        {
-
                             path: 'discipline-scientifique-parent',
                             children: [
                                 {
@@ -267,17 +253,6 @@ import { DistinctionDisciplineScientifiqueAdminComponent } from './view/distinct
                         },
                         {
 
-                            path: 'key-word',
-                            children: [
-                                {
-                                    path: 'list',
-                                    component: KeyWordAdminComponent ,
-                                    canActivate: [AuthGuard]
-                                }
-                            ]
-                        },
-                        {
-
                             path: 'distinction-discipline-scientifique',
                             children: [
                                 {
@@ -287,7 +262,12 @@ import { DistinctionDisciplineScientifiqueAdminComponent } from './view/distinct
                                 }
                             ]
                         },
+                        {
 
+                            path: 'folderTest',
+                            loadChildren: './view/folder-test/folder-test-routing.module#FolderTestRoutingModule',
+                            canActivate: [AuthGuard],
+                        },
                     ]
                 },
             ]

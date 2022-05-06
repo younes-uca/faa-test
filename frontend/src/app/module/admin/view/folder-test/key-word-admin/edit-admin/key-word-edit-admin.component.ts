@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {KeyWordService} from '../../../../../controller/service/KeyWord.service';
-import {KeyWordVo} from '../../../../../controller/model/KeyWord.model';
-import {RoleService} from '../../../../../controller/service/role.service';
+import {KeyWordService} from '../../../../../../controller/service/KeyWord.service';
+import {KeyWordVo} from '../../../../../../controller/model/KeyWord.model';
+import {RoleService} from '../../../../../../controller/service/role.service';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { environment } from 'src/environments/environment';
-import {DateUtils} from '../../../../../utils/DateUtils';
+import {DateUtils} from '../../../../../../utils/DateUtils';
 import {DatePipe} from '@angular/common';
 
 

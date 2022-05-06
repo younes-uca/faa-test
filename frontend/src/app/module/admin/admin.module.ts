@@ -74,11 +74,6 @@ import { KeyWordDisciplineScientifiqueErcEditAdminComponent } from './view/key-w
 import { KeyWordDisciplineScientifiqueErcViewAdminComponent } from './view/key-word-discipline-scientifique-erc-admin/view-admin/key-word-discipline-scientifique-erc-view-admin.component';
 import { KeyWordDisciplineScientifiqueErcListAdminComponent } from './view/key-word-discipline-scientifique-erc-admin/list-admin/key-word-discipline-scientifique-erc-list-admin.component';
 import { KeyWordDisciplineScientifiqueErcAdminComponent } from './view/key-word-discipline-scientifique-erc-admin/key-word-discipline-scientifique-erc-admin.component';
-import { EtatEtapeCampagneCreateAdminComponent } from './view/etat-etape-campagne-admin/create-admin/etat-etape-campagne-create-admin.component';
-import { EtatEtapeCampagneEditAdminComponent } from './view/etat-etape-campagne-admin/edit-admin/etat-etape-campagne-edit-admin.component';
-import { EtatEtapeCampagneViewAdminComponent } from './view/etat-etape-campagne-admin/view-admin/etat-etape-campagne-view-admin.component';
-import { EtatEtapeCampagneListAdminComponent } from './view/etat-etape-campagne-admin/list-admin/etat-etape-campagne-list-admin.component';
-import { EtatEtapeCampagneAdminComponent } from './view/etat-etape-campagne-admin/etat-etape-campagne-admin.component';
 import { DisciplineScientifiqueParentCreateAdminComponent } from './view/discipline-scientifique-parent-admin/create-admin/discipline-scientifique-parent-create-admin.component';
 import { DisciplineScientifiqueParentEditAdminComponent } from './view/discipline-scientifique-parent-admin/edit-admin/discipline-scientifique-parent-edit-admin.component';
 import { DisciplineScientifiqueParentViewAdminComponent } from './view/discipline-scientifique-parent-admin/view-admin/discipline-scientifique-parent-view-admin.component';
@@ -99,11 +94,6 @@ import { CampagneEditAdminComponent } from './view/campagne-admin/edit-admin/cam
 import { CampagneViewAdminComponent } from './view/campagne-admin/view-admin/campagne-view-admin.component';
 import { CampagneListAdminComponent } from './view/campagne-admin/list-admin/campagne-list-admin.component';
 import { CampagneAdminComponent } from './view/campagne-admin/campagne-admin.component';
-import { KeyWordCreateAdminComponent } from './view/key-word-admin/create-admin/key-word-create-admin.component';
-import { KeyWordEditAdminComponent } from './view/key-word-admin/edit-admin/key-word-edit-admin.component';
-import { KeyWordViewAdminComponent } from './view/key-word-admin/view-admin/key-word-view-admin.component';
-import { KeyWordListAdminComponent } from './view/key-word-admin/list-admin/key-word-list-admin.component';
-import { KeyWordAdminComponent } from './view/key-word-admin/key-word-admin.component';
 import { DistinctionDisciplineScientifiqueCreateAdminComponent } from './view/distinction-discipline-scientifique-admin/create-admin/distinction-discipline-scientifique-create-admin.component';
 import { DistinctionDisciplineScientifiqueEditAdminComponent } from './view/distinction-discipline-scientifique-admin/edit-admin/distinction-discipline-scientifique-edit-admin.component';
 import { DistinctionDisciplineScientifiqueViewAdminComponent } from './view/distinction-discipline-scientifique-admin/view-admin/distinction-discipline-scientifique-view-admin.component';
@@ -120,6 +110,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { MessageModule } from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
 import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-chercheur-admin.component';
+import {FolderTestModule} from "./view/folder-test/folder-test.module";
 
 @NgModule({
   declarations: [
@@ -181,11 +172,6 @@ import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-cher
     KeyWordDisciplineScientifiqueErcViewAdminComponent,
     KeyWordDisciplineScientifiqueErcEditAdminComponent,
     KeyWordDisciplineScientifiqueErcAdminComponent,
-    EtatEtapeCampagneCreateAdminComponent,
-    EtatEtapeCampagneListAdminComponent,
-    EtatEtapeCampagneViewAdminComponent,
-    EtatEtapeCampagneEditAdminComponent,
-    EtatEtapeCampagneAdminComponent,
     DisciplineScientifiqueParentCreateAdminComponent,
     DisciplineScientifiqueParentListAdminComponent,
     DisciplineScientifiqueParentViewAdminComponent,
@@ -206,11 +192,6 @@ import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-cher
     CampagneViewAdminComponent,
     CampagneEditAdminComponent,
     CampagneAdminComponent,
-    KeyWordCreateAdminComponent,
-    KeyWordListAdminComponent,
-    KeyWordViewAdminComponent,
-    KeyWordEditAdminComponent,
-    KeyWordAdminComponent,
     DistinctionDisciplineScientifiqueCreateAdminComponent,
     DistinctionDisciplineScientifiqueListAdminComponent,
     DistinctionDisciplineScientifiqueViewAdminComponent,
@@ -242,7 +223,8 @@ import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-cher
     MessagesModule,
     InputNumberModule,
     BadgeModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FolderTestModule,
   ],
   exports: [
   LoginAdminComponent,
@@ -303,11 +285,6 @@ import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-cher
   KeyWordDisciplineScientifiqueErcViewAdminComponent,
   KeyWordDisciplineScientifiqueErcEditAdminComponent,
   KeyWordDisciplineScientifiqueErcAdminComponent,
-  EtatEtapeCampagneCreateAdminComponent,
-  EtatEtapeCampagneListAdminComponent,
-  EtatEtapeCampagneViewAdminComponent,
-  EtatEtapeCampagneEditAdminComponent,
-  EtatEtapeCampagneAdminComponent,
   DisciplineScientifiqueParentCreateAdminComponent,
   DisciplineScientifiqueParentListAdminComponent,
   DisciplineScientifiqueParentViewAdminComponent,
@@ -328,11 +305,6 @@ import {SwitchChercheurAdminComponent} from './view/switch_chercheur/switch-cher
   CampagneViewAdminComponent,
   CampagneEditAdminComponent,
   CampagneAdminComponent,
-  KeyWordCreateAdminComponent,
-  KeyWordListAdminComponent,
-  KeyWordViewAdminComponent,
-  KeyWordEditAdminComponent,
-  KeyWordAdminComponent,
   DistinctionDisciplineScientifiqueCreateAdminComponent,
   DistinctionDisciplineScientifiqueListAdminComponent,
   DistinctionDisciplineScientifiqueViewAdminComponent,
