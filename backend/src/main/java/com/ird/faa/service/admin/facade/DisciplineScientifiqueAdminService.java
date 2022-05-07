@@ -8,6 +8,8 @@ import com.ird.faa.service.core.facade.AbstractService;
 public interface DisciplineScientifiqueAdminService extends AbstractService<DisciplineScientifique,Long,DisciplineScientifiqueVo>{
 
 
+    List<DisciplineScientifique> findByDifferentIds(List<Long> ids);
+
     /**
     * find DisciplineScientifique from database by code (reference)
     * @param code - reference of DisciplineScientifique

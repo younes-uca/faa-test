@@ -10,21 +10,21 @@ import {Router} from '@angular/router';
 })
 export class LoginChercheurComponent implements OnInit {
   loginForm = new FormGroup({
-    username:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required)
-  })
-  constructor(private authService:AuthService,private router: Router) { }
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
   submit(){
     const formValues = this.loginForm.value;
     const username = formValues.username;
-    const passowrd = formValues.password;
-    this.authService.loginChercheur(username,passowrd);
+    const password = formValues.password;
+    this.authService.loginChercheur(username, password);
 
   }
     register(){
-    this.router.navigate(['/Chercheur/register']);
+    this.router.navigate(['/chercheur/register']);
   }
 }

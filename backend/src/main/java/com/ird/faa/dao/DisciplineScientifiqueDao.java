@@ -1,6 +1,7 @@
 package com.ird.faa.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -33,5 +34,7 @@ public interface DisciplineScientifiqueDao extends JpaRepository<DisciplineScien
 
     int deleteByChercheurId(Long id);
 
+    @Query("SELECT item FROM DisciplineScientifique item WHERE item.id NOT IN (:idsl)")
+    List<DisciplineScientifique> findByDifferentIds(@Param("idsl") List<Long> ids);
 
 }

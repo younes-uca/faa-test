@@ -143,4 +143,10 @@ private DisciplineScientifiqueConverter disciplineScientifiqueConverter;
             public DisciplineScientifiqueVo desarchiver(@RequestBody DisciplineScientifiqueVo disciplineScientifiqueVo){
                 DisciplineScientifique disciplineScientifique = disciplineScientifiqueService.desarchiver(disciplineScientifiqueConverter.toItem(disciplineScientifiqueVo));
                 return disciplineScientifiqueConverter.toVo(disciplineScientifique);}
-            }
+    @PostMapping("findByDifferentIds")
+    public List<DisciplineScientifiqueVo> findByDifferentIds(@RequestBody List<Long> ids) {
+        return disciplineScientifiqueConverter.toVo(disciplineScientifiqueService.findByDifferentIds(ids));
+    }
+}
+
+

@@ -20,8 +20,6 @@ import com.ird.faa.service.admin.facade.ChercheurAdminService;
 
 import com.ird.faa.ws.rest.provided.vo.DisciplineScientifiqueVo;
 import com.ird.faa.service.util.*;
-import com.ird.faa.bean.DisciplineScientifiqueErcAssociation;
-import com.ird.faa.service.admin.facade.DisciplineScientifiqueErcAssociationAdminService;
 
 import com.ird.faa.service.core.facade.ArchivableService;
 import com.ird.faa.service.core.impl.AbstractServiceImpl;
@@ -97,6 +95,11 @@ public List<DisciplineScientifique> findAll(){
         public int deleteByChercheurId(Long id){
         return disciplineScientifiqueDao.deleteByChercheurId(id);
         }
+
+    @Override
+    public List<DisciplineScientifique> findByDifferentIds(List<Long> ids) {
+        return disciplineScientifiqueDao.findByDifferentIds(ids);
+    }
 
     @Override
     public DisciplineScientifique findByCode(String code){

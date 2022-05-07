@@ -74,17 +74,17 @@ export class AuthService {
 
     }
 
-     public hasRole(role:Role): boolean {
+     public hasRole(role: Role): boolean {
        const index = this._authenticatedUser.roles.findIndex(r=>r.authority == role.authority);
        return  index > -1 ? true : false;
     }
         public register() {
         console.log(this.user)
-        this.http.post<any>(this.API+'api/users/save', this.user, {observe: 'response'}).subscribe(
+        this.http.post<any>(this.API +'api/users/save', this.user, {observe: 'response'}).subscribe(
             resp => {
                 this.router.navigate(['/login']);
 
-            }, (error:HttpErrorResponse) => {
+            }, (error: HttpErrorResponse) => {
                console.log(error.error)
             }
         );

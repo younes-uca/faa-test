@@ -10,21 +10,21 @@ import {Router} from '@angular/router';
 })
 export class LoginAdminComponent implements OnInit {
   loginForm = new FormGroup({
-    username:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required)
-  })
-  constructor(private authService:AuthService,private router: Router) { }
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
   submit(){
     const formValues = this.loginForm.value;
     const username = formValues.username;
-    const passowrd = formValues.password;
-    this.authService.loginAdmin(username,passowrd);
+    const password = formValues.password;
+    this.authService.loginAdmin(username, password);
 
   }
     register(){
-    this.router.navigate(['/Admin/register']);
+    this.router.navigate(['/admin/register']);
   }
 }

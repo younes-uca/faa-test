@@ -58,10 +58,10 @@ constructor(private datePipe: DatePipe, private distinctionService: DistinctionS
 // methods
 ngOnInit(): void {
 
-            this.disciplineScientifiqueService.findAll().subscribe(data => this.prepareDistinctionDisciplineScientifiques(data));
+            this.distinctionService.findDSWCD().subscribe(data => this.prepareDistinctionDisciplineScientifiques(data));
 
                 this.selectedDistinctionDisciplineScientifiques.disciplineScientifiqueVo = new DisciplineScientifiqueVo();
-                this.disciplineScientifiqueService.findAll().subscribe((data) => this.disciplineScientifiques = data);
+                this.distinctionService.findDSWCD().subscribe((data) => this.disciplineScientifiques = data);
 
 
     this.selectedChercheur = new ChercheurVo();

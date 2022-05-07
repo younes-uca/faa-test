@@ -33,5 +33,5 @@ public interface DisciplineScientifiqueChercheurDao extends JpaRepository<Discip
 
     int deleteByChercheurId(Long id);
 
-
+    List<DisciplineScientifiqueChercheur> findByChercheurUsername(String username);
 }

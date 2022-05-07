@@ -11,6 +11,7 @@ import {EtatEtapeCampagneVo} from '../model/EtatEtapeCampagne.model';
 import {CampagneVo} from '../model/Campagne.model';
 import {DistinctionDisciplineScientifiqueVo} from '../model/DistinctionDisciplineScientifique.model';
 import {ChercheurVo} from '../model/Chercheur.model';
+import {DisciplineScientifiqueVo} from "../model/DisciplineScientifique.model";
 
 
 @Injectable({
@@ -142,4 +143,8 @@ return this._distinctions;
         this._searchDistinction = value;
        }
 
+
+    public findDSWCD(){
+        return this.http.get<Array<DisciplineScientifiqueVo>>('http://localhost:8036/api/admin/distinction/findDisciplineScientifiqueWithChercheurDis');
+    }
 }

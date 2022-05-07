@@ -1,6 +1,8 @@
 package com.ird.faa.service.admin.facade;
 
 import java.util.List;
+
+import com.ird.faa.bean.DisciplineScientifique;
 import com.ird.faa.bean.Distinction;
 import com.ird.faa.ws.rest.provided.vo.DistinctionVo;
 import com.ird.faa.service.core.facade.AbstractService;
@@ -41,9 +43,5 @@ public interface DistinctionAdminService extends AbstractService<Distinction,Lon
     int deleteByEtatEtapeCampagneId(Long id);
 
 
-
-
-
-
-
+    List<DisciplineScientifique> findDisciplineScientifiqueWithChercheurDis();
 }
